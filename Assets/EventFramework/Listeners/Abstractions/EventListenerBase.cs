@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 namespace EventFramework.Listeners.Abstractions {
-    public abstract class EventListenerBase<TChannel, TInput> : MonoBehaviour, IEventListener<TChannel>
+    public abstract class EventListenerBase<TChannel, TInput> : MonoBehaviour, IEventListener<TInput>
         where TChannel : IObservable<TInput> {
         [field: SerializeField] TChannel _channel;
 
@@ -12,7 +12,7 @@ namespace EventFramework.Listeners.Abstractions {
             if (_channel == null)
                 return;
 
-            _unsubscribe = _channel.Subscribe((IObserver<TInput>)this);
+            _unsubscribe = _channel.Subscribe(this);
         }
 
         void OnDisable() {
@@ -30,6 +30,6 @@ namespace EventFramework.Listeners.Abstractions {
             Debug.LogException(error);
         }
 
-        public abstract void OnNext(TChannel data);
+        public abstract void OnNext(TInput value);
     }
 }

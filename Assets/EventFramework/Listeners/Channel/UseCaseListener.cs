@@ -14,9 +14,5 @@ namespace EventFramework.Listeners.Channel {
 
             _unityEventResponse?.Invoke(data);
         }
-
-        public override void OnNext(EventChannel data) {
-            Debug.LogError("Should not get here?", this);
-        }
     }
 }

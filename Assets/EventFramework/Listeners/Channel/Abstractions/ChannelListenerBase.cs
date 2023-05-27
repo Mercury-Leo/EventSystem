@@ -9,6 +9,5 @@ namespace EventFramework.Listeners.Channel.Abstractions {
             IChannelListener<TInput>
         where TChannel : IObservable<TInput> where TUnityEvent : UnityEvent<TResponse> {
         [SerializeField] protected TUnityEvent _unityEventResponse;
-        public abstract void OnNext(TInput value);
     }
 }
