@@ -1,35 +1,14 @@
-using System;
+using EventFramework.Observable.Abstractions;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace EventFramework.Listeners.Abstractions {
-    public abstract class EventListenerBase<TChannel, TInput> : MonoBehaviour, IEventListener<TInput>
-        where TChannel : IObservable<TInput> {
-        [field: SerializeField] TChannel _channel;
+    public class EventListenerBase<T, TChannel, TUER> : ListenerBase<TChannel, T>, IEventListener<T>
+        where TChannel : ISubscribable<T> where TUER : UnityEvent<T> {
+        [field: SerializeField] public TUER EventResponse { get; set; }
 
-        IDisposable _unsubscribe;
-
-        void OnEnable() {
-            if (_channel == null)
-                return;
-
-            _unsubscribe = _channel.Subscribe(this);
+        public override void Raise(T data) {
+            EventResponse?.Invoke(data);
         }
-
-        void OnDisable() {
-            if (_channel == null)
-                return;
-
-            _unsubscribe.Dispose();
-        }
-
-        public virtual void OnCompleted() {
-            OnDisable();
-        }
-
-        public virtual void OnError(Exception error) {
-            Debug.LogException(error);
-        }
-
-        public abstract void OnNext(TInput value);
     }
 }

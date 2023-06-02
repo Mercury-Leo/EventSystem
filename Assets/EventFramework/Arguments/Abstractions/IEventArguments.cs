@@ -2,11 +2,7 @@ using EventFramework.UseCase.Abstractions;
 using JetBrains.Annotations;
 
 namespace EventFramework.Arguments.Abstractions {
-    public interface IEventArguments {
+    public interface IEventArguments : IUseCaseData {
         [CanBeNull] string ID { get; }
-
-        object Data { get; }
-
-        IEventUseCase UseCase { get; }
     }
 }

@@ -1,13 +1,15 @@
-using System;
 using EventFramework.Listeners.Abstractions;
+using EventFramework.Observable.Abstractions;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace EventFramework.Listeners.Channel.Abstractions {
     public abstract class
-        ChannelListenerBase<TInput, TResponse, TChannel, TUnityEvent> : EventListenerBase<TChannel, TInput>,
-            IChannelListener<TInput>
-        where TChannel : IObservable<TInput> where TUnityEvent : UnityEvent<TResponse> {
-        [SerializeField] protected TUnityEvent _unityEventResponse;
+        ChannelListenerBase<TInput, TResponse, TChannel, TUnityEvent> : ListenerBase<TChannel, TInput>,
+            IChannelListener<TInput> where TChannel : ISubscribable<TInput>
+        where TUnityEvent : UnityEvent<TResponse> {
+        [SerializeField] TUnityEvent _unityEventResponse;
+
+        public TUnityEvent UnityEventResponse => _unityEventResponse;
     }
 }

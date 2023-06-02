@@ -6,9 +6,9 @@ using UnityEngine;
 namespace EventFramework.Channel {
     [CreateAssetMenu(fileName = "Out Channel", menuName = "Out Channel")]
     public class OutDataChannel : ChannelBase<IDataEvent, IEventArguments> {
-        public override void Raise(IDataEvent data) {
+        public override void Announce(IDataEvent data) {
             foreach (var listener in Listeners)
-                listener.OnNext(new EventArguments(data));
+                listener.Raise(new EventArguments(data));
         }
     }
 }

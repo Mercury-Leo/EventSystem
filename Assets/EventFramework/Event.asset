@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b630857a57951254cb28730529c17186, type: 3}
-  m_Name: new EventDispatcher
+  m_Script: {fileID: 11500000, guid: a9be5c6e94a2aa44388474b09988a901, type: 3}
+  m_Name: Event
   m_EditorClassIdentifier: 
-  _dataRequest: {fileID: 11400000, guid: 85cf61e1319b46144b83ef7b6357101e, type: 2}
-  _outChannel: {fileID: 11400000, guid: cd7af93fd0b39fa4abd20a3ffb4e8579, type: 2}

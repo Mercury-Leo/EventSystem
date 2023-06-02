@@ -1,8 +1,7 @@
 using System;
-using EventFramework.Arguments.Abstractions;
 using UnityEngine;
 
-namespace EventFramework.Arguments {
+namespace EventFramework.Arguments.Abstractions {
 	public interface IDataRequestArguments {
 		Action CallBack { get; }
 		
