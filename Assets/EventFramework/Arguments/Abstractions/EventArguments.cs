@@ -19,9 +19,5 @@ namespace EventFramework.Arguments.Abstractions {
             UseCase = useCase;
             Data = data;
         }
-
-        public EventArguments(IDataEvent dataRequestArguments) {
-            
-        }
     }
 }

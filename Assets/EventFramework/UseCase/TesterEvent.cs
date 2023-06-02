@@ -1,21 +1,20 @@
-using System;
 using EventFramework.Arguments;
 using EventFramework.Arguments.Abstractions;
 using EventFramework.Channel;
-using EventFramework.Dispatch;
+using EventFramework.Events;
 using EventFramework.Listeners.Channel;
+using EventFramework.RequestSender;
 using EventFramework.UseCase.Abstractions;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace EventFramework.UseCase {
     public class TesterEvent : MonoBehaviour {
         [SerializeField] private UseCaseListener _useCaseListener;
 
-        [SerializeField] private UseCaseBase useCase;
+        [SerializeField] private Sender _sender;
 
-        [SerializeField] private Dispatcher _dispatcher;
+        [SerializeField] private UseCaseBase _useCase;
+
 
         void OnEnable() {
             _useCaseListener.UnityEventResponse.AddListener(Call);
@@ -26,12 +25,17 @@ namespace EventFramework.UseCase {
         }
 
         void Call(object arg0) {
-            Debug.LogError($"Got data{arg0}");
+            if (arg0 is not DataEvent data) {
+                Debug.LogError("Wrong data");
+                return;
+            }
+
+            Debug.Log($"Got data{data.EventArguments.Data}");
         }
-        
+
         [ContextMenu("Send")]
         public void SendEvent() {
-            _dispatcher.Raise(new DataRequestArguments(new EventArguments(useCase.UseCase, "tester")));
+            _sender.SendDataRequest(new EventArguments(_useCase.UseCase, "got there"));
         }
     }
 }

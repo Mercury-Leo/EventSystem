@@ -207,6 +207,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1107002459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1107002461}
+  - component: {fileID: 1107002460}
+  m_Layer: 0
+  m_Name: Sender
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1107002460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107002459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fdeaf00f24868e40a9fe0df1a305bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sender: {fileID: 11400000, guid: 85cf61e1319b46144b83ef7b6357101e, type: 2}
+--- !u!4 &1107002461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107002459}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1270847381
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,8 +282,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _useCaseListener: {fileID: 1713854342}
-  useCase: {fileID: 11400000, guid: b020283427709bd468471fef964ef06f, type: 2}
-  _dispatcher: {fileID: 11400000, guid: 4a29e3388a5f5c94d9db453700a34ba3, type: 2}
+  _sender: {fileID: 1107002460}
+  _useCase: {fileID: 11400000, guid: b020283427709bd468471fef964ef06f, type: 2}
 --- !u!4 &1270847383
 Transform:
   m_ObjectHideFlags: 0
@@ -298,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ca5dc9f06458e4781cf30e0a237f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _channel: {fileID: 11400000, guid: 62d46ecc27424c245b9554007280361d, type: 2}
+  _channel: {fileID: 11400000, guid: cd7af93fd0b39fa4abd20a3ffb4e8579, type: 2}
   _unityEventResponse:
     m_PersistentCalls:
       m_Calls: []

@@ -1,17 +1,14 @@
-using EventFramework.Arguments;
 using EventFramework.Arguments.Abstractions;
-using EventFramework.Channel.Abstractions;
-using EventFramework.Events;
-using EventFramework.Events.Abstractions;
+using EventFramework.Channel;
 using EventFramework.Listeners.Abstractions;
 using UnityEngine;
 
 namespace EventFramework.Dispatch {
     [CreateAssetMenu(fileName = "new EventDispatcher", menuName = "Event Dispatcher")]
     public class Dispatcher : ScriptableObject, IListener<IDataRequestArguments> {
-        [SerializeField] EventBase<IDataRequestArguments> _dataRequest;
+        [Header("In")] [SerializeField] DataRequestEvent _dataRequest;
 
-        [SerializeField] ChannelBase<IDataEvent, IEventArguments> _outChannel;
+        [Header("Out")] [SerializeField] SendDataRequestsEvent _outChannel;
 
         void OnEnable() {
             _dataRequest.Subscribe(this);
@@ -22,9 +19,7 @@ namespace EventFramework.Dispatch {
         }
 
         public void Raise(IDataRequestArguments data) {
-            var request = new DataEvent(data.EventArguments);
-
-            _outChannel.Raise(request);
+            _outChannel.Raise(data.EventArguments);
         }
     }
 }

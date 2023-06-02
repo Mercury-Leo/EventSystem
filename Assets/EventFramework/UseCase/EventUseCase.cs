@@ -21,5 +21,14 @@ namespace EventFramework.UseCase {
 
             Specification = Enum.Parse(UseCaseType, specification) as Enum;
         }
+
+        public bool Equals(IEventUseCase other) {
+            if (ReferenceEquals(other, null))
+                return false;
+            if (ReferenceEquals(this, other))
+                return true;
+
+            return GetType() == other.GetType() && Equals(Specification, other.Specification);
+        }
     }
 }
