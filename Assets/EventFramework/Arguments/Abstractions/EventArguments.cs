@@ -1,5 +1,4 @@
 using System;
-using EventFramework.Events.Abstractions;
 using EventFramework.UseCase.Abstractions;
 
 namespace EventFramework.Arguments.Abstractions {

@@ -4,8 +4,8 @@ using EventFramework.Listeners.Abstractions;
 using UnityEngine;
 
 namespace EventFramework.Dispatch {
-    [CreateAssetMenu(fileName = "new EventDispatcher", menuName = "Event Dispatcher")]
-    public class Dispatcher : ScriptableObject, IListener<IDataRequestArguments> {
+    [CreateAssetMenu(fileName = "new EventDispatch", menuName = "Event Dispatch")]
+    public class EventDispatch : ScriptableObject, IListener<IDataRequestArguments> {
         [Header("In")] [SerializeField] DataRequestEvent _dataRequest;
 
         [Header("Out")] [SerializeField] SendDataRequestsEvent _outChannel;
